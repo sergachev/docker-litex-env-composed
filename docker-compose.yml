@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  litex:
+    image: lerwys/litex
+    container_name: litex
+    stdin_open: true
+    tty: true
+    depends_on:
+      - riscv-tools
+    volumes:
+      - type: volume
+        source: riscv-tools-volume
+        target: /opt/riscv32im
+        volume:
+          read_only: true
+
+  riscv-tools:
+    image: lerwys/riscv-tools
+    container_name: riscv-tools
+    volumes:
+      - type: volume
+        source: riscv-tools-volume
+        target: /opt/riscv32im
+        volume:
+          read_only: true
+
+volumes:
+  riscv-tools-volume:
