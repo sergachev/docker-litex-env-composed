@@ -3,7 +3,7 @@ version: '3.4'
 services:
 
   litex-env:
-    build: ./
+    image: lerwys/litex-env
     container_name: litex-env
     stdin_open: true
     tty: true
