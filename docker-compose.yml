@@ -14,6 +14,11 @@ services:
         target: /opt/riscv32im
         volume:
           read_only: true
+      - type: bind
+        source: /opt/Xilinx
+        target: /opt/Xilinx
+        volume:
+          read_only: true
 
   riscv-tools:
     image: lerwys/riscv-tools
