@@ -7,7 +7,7 @@ services:
     stdin_open: true
     tty: true
     environment:
-      - PATH=/opt/riscv32i/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/Xilinx/Vivado/2018.2/bin
+      - PATH=/opt/riscv32im/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/Xilinx/Vivado/2018.2/bin
     depends_on:
       - riscv-tools
     volumes:
