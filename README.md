@@ -1,6 +1,6 @@
 Docker image Litex environment
 ================================
 
-### Run Instructions
+## Run Instructions
 
-    docker-compose run --rm litex
+    docker-compose run --rm litex-env
