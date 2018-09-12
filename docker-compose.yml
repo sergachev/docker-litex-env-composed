@@ -5,8 +5,6 @@ services:
   litex-env:
     image: lerwys/litex-env
     container_name: litex-env
-    stdin_open: true
-    tty: true
     environment:
       - PATH=/opt/riscv32im/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/Xilinx/Vivado/2018.2/bin
     depends_on:
