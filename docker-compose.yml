@@ -8,7 +8,6 @@ services:
     environment:
       - PATH=/opt/riscv32im/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/Xilinx/Vivado/2018.2/bin
     depends_on:
-      - litex
       - riscv-tools
     volumes:
       - type: volume
@@ -21,10 +20,6 @@ services:
         target: /opt/Xilinx
         volume:
           read_only: true
-
-  litex:
-    image: lerwys/litex
-    container_name: litex
 
   riscv-tools:
     image: lerwys/riscv-tools
