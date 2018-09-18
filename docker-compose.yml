@@ -7,6 +7,7 @@ services:
     container_name: litex-env
     environment:
         - PATH=/opt/riscv32im/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${XIL_PATH:-/opt/Xilinx}/Vivado/${VIVADO_VER:-2018.2}/bin
+    privileged: true
     depends_on:
       - riscv-tools
     volumes:
