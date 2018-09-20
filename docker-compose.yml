@@ -7,14 +7,20 @@ services:
     container_name: litex-env
     environment:
         - XILINX_VIVADO={XIL_PATH:-/opt/Xilinx}/Vivado/${VIVADO_VER:-2018.2}
-        - PATH=/opt/riscv32im/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${XIL_PATH:-/opt/Xilinx}/Vivado/${VIVADO_VER:-2018.2}/bin
+        - PATH=/opt/lm32/bin:/opt/riscv32im/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${XIL_PATH:-/opt/Xilinx}/Vivado/${VIVADO_VER:-2018.2}/bin
     privileged: true
     depends_on:
       - riscv-tools
+      - lm32-tools
     volumes:
       - type: volume
         source: riscv-tools-volume
         target: /opt/riscv32im
+        volume:
+          read_only: true
+      - type: volume
+        source: lm32-tools-volume
+        target: /opt/lm32
         volume:
           read_only: true
       - type: bind
@@ -33,5 +39,16 @@ services:
         volume:
           read_only: true
 
+  lm32-tools:
+    image: lerwys/lm32-tools
+    container_name: lm32-tools
+    volumes:
+      - type: volume
+        source: lm32-tools-volume
+        target: /opt/lm32
+        volume:
+          read_only: true
+
 volumes:
   riscv-tools-volume:
+  lm32-tools-volume:
