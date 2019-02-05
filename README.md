@@ -3,4 +3,4 @@ Docker image Litex environment
 
 ## Run Instructions
 
-    docker-compose run --rm litex-env
+    docker-compose run --rm litex-env bash
