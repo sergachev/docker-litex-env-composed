@@ -5,9 +5,10 @@ services:
   litex-env:
     image: lerwys/litex-env
     container_name: litex-env
+    working_dir: /build
     environment:
-        - XILINX_VIVADO={XIL_PATH:-/opt/Xilinx}/Vivado/${VIVADO_VER:-2018.2}
-        - PATH=/opt/lm32/bin:/opt/riscv32im/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${XIL_PATH:-/opt/Xilinx}/Vivado/${VIVADO_VER:-2018.2}/bin
+        - XILINX_VIVADO={XIL_PATH:-/opt/Xilinx}/Vivado/${VIVADO_VER:-2019.1}
+        - PATH=/opt/lm32/bin:/opt/riscv32im/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${XIL_PATH:-/opt/Xilinx}/Vivado/${VIVADO_VER:-2019.1}/bin
     privileged: true
     depends_on:
       - riscv-tools
