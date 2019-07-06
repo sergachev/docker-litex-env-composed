@@ -1,9 +1,22 @@
 version: '3.4'
 
 services:
+  iverilog:
+    image: lerwys/iverilog
+    build:
+      context: https://github.com/sergachev/docker-iverilog.git
+
+  litex:
+    image: lerwys/litex
+    build:
+      context: https://github.com/sergachev/docker-litex.git
+    depends_on:
+      - iverilog
 
   litex-env:
     image: lerwys/litex-env
+    build:
+      context: https://github.com/sergachev/docker-litex-env.git
     container_name: litex-env
     working_dir: /build
     environment:
@@ -11,6 +24,7 @@ services:
         - PATH=/yosys-bin:/opt/lm32/bin:/opt/riscv32im/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${XIL_PATH:-/opt/Xilinx}/Vivado/${VIVADO_VER:-2019.1}/bin
     privileged: true
     depends_on:
+      - litex
       - riscv-tools
 #      - lm32-tools
       - yosys
@@ -35,6 +49,8 @@ services:
 
   riscv-tools:
     image: lerwys/riscv-tools
+    build:
+      context: https://github.com/sergachev/docker-riscv-tools.git
     container_name: riscv-tools
     volumes:
       - type: volume
@@ -55,6 +71,8 @@ services:
 
   yosys:
     image: yosys
+    build:
+      context: https://github.com/sergachev/docker-yosys.git
     container_name: yosys
     volumes:
      - yosys-volume-bin:/usr/local/bin:ro
