@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.7'
 
 services:
   iverilog:
@@ -29,11 +29,7 @@ services:
 #      - lm32-tools
       - yosys
     volumes:
-      - type: volume
-        source: riscv-tools-volume
-        target: /opt/riscv32im
-        volume:
-          read_only: true
+      - riscv-tools-volume:/opt/riscv32im:ro
 #      - type: volume
 #        source: lm32-tools-volume
 #        target: /opt/lm32
@@ -41,11 +37,7 @@ services:
 #          read_only: true
       - yosys-volume-bin:/yosys-bin:ro
       - yosys-volume-share:/usr/local/share/yosys:ro
-      - type: bind
-        source: ${XIL_PATH:-/opt/Xilinx}
-        target: /opt/Xilinx
-        volume:
-          read_only: true
+      - ${XIL_PATH:-/opt/Xilinx}:/opt/Xilinx:ro
 
   riscv-tools:
     image: lerwys/riscv-tools
